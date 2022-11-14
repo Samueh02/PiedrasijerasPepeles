@@ -30,7 +30,6 @@ public class SocketServidor {
 			String numerosDados;
 			do {
 
-				int peticion = 0;
 				System.out.println("SERVIDOR: Esperando peticion por el puerto " + PUERTO);
 
 				socketAlCliente = serverSocket.accept();
