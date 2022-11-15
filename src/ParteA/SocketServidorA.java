@@ -8,7 +8,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class SocketServidor {
+public class SocketServidorA {
 
 	public static final int PUERTO = 2020;
 
