@@ -1,4 +1,4 @@
-package Servidor;
+package ParteA;
 
 import java.io.BufferedReader;
 import java.io.IOException;

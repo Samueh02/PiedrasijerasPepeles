@@ -13,7 +13,7 @@ public class SocketClienteParteA {
 
 	// IP y Puerto a la que nos vamos a conectar
 	public static final int PUERTO = 2020;
-	public static final String IP_SERVER = "10.34.73.42";
+	public static final String IP_SERVER = "localhost";
 
 	public static void main(String[] args) {
 		System.out.println("        APLICACI�N CLIENTE         ");
