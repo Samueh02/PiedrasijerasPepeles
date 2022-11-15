@@ -72,10 +72,21 @@ public class SocketClienteParteB {
 					System.out.println("Marcador:");
 					System.out.println("Jugador 1: " + puntos1);
 					System.out.println("Jugador 2: " + puntos2 + "\n");
+					
+					
+					if (Integer.parseInt(puntos1) >= 3) {
+						System.out.println("------El jugador 1 ha ganado la partida a tres rondas------");
+						socketAlServidor.close();
+					}
+					if (Integer.parseInt(puntos2) >= 3) {
+						System.out.println("------El jugador 2 ha ganado la partida a tres rondas------");
+						socketAlServidor.close();
+
+					}
 
 				}
 
-				socketAlServidor.close();
+				
 
 			} while (continuar);
 		} catch (UnknownHostException e) {
