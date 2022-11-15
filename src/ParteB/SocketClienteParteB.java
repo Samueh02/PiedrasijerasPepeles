@@ -23,7 +23,7 @@ public class SocketClienteParteB {
 		InetSocketAddress direccionServidor = new InetSocketAddress(IP_SERVER, PUERTO);
 
 		try (Scanner sc = new Scanner(System.in);) {
-
+			int ronda = 0;
 			boolean continuar = true;
 			String opcion;
 			do {
@@ -32,9 +32,9 @@ public class SocketClienteParteB {
 
 				PrintStream salida = new PrintStream(socketAlServidor.getOutputStream());
 
-				System.out
-						.println("Elija la opcion que quiera realizar: \n 1-Piedra \n 2-Papel \n 3-Tijera \n 4-Sair ");
-				System.out.print("Opcion:");
+				System.out.println("-----Comienza la ronda " + ronda + " -----");
+				System.out.println("\n[1]=Piedra [2]=Papel [3]=Tijeras");
+				System.out.println("Jugador 1 Ingresa tu jugada:");
 
 				boolean valido = false;
 
@@ -66,14 +66,12 @@ public class SocketClienteParteB {
 				String puntos1 = bf.readLine();
 				String puntos2 = bf.readLine();
 
-				
 				if (imprimir) {
-						
+
 					System.out.println("Marcador:");
 					System.out.println("Jugador 1: " + puntos1);
 					System.out.println("Jugador 2: " + puntos2 + "\n");
-					
-					
+
 					if (Integer.parseInt(puntos1) >= 3) {
 						System.out.println("------El jugador 1 ha ganado la partida a tres rondas------");
 						socketAlServidor.close();
@@ -87,8 +85,6 @@ public class SocketClienteParteB {
 					}
 
 				}
-
-				
 
 			} while (continuar);
 		} catch (UnknownHostException e) {

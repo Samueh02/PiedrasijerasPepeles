@@ -37,7 +37,14 @@ public class SocketServidorClientB {
 
 			boolean aux = true;
 
+			int ronda = 0;
+
 			do {
+
+				ronda++;
+				System.out.println("-----Comienza la ronda " + ronda + " -----");
+				System.out.println("[1]=Piedra [2]=Papel [3]=Tijeras");
+				System.out.println("Jugador 2 Ingresa tu jugada:");
 
 				System.out.println("SERVIDOR: Esperando peticion por el puerto " + PUERTO);
 
