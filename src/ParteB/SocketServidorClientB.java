@@ -37,16 +37,13 @@ public class SocketServidorClientB {
 
 			boolean aux = true;
 
-			int ronda = 0;
+			int ronda = -1;
 
 			do {
 
 				ronda++;
-				System.out.println("-----Comienza la ronda " + ronda + " -----");
-				System.out.println("[1]=Piedra [2]=Papel [3]=Tijeras");
-				System.out.println("Jugador 2 Ingresa tu jugada:");
-
-				System.out.println("SERVIDOR: Esperando peticion por el puerto " + PUERTO);
+				
+				System.out.println("-Esperando al jugador 1...");
 
 				socketAlCliente = serverSocket.accept();
 
@@ -57,7 +54,10 @@ public class SocketServidorClientB {
 
 				System.out.println("SERVIDOR: El jugador 1 eligio accion, te toca elegir");
 
-				System.out.println("-Jugador dos que eliges?");
+				System.out.println("-----Comienza la ronda " + ronda + " -----");
+				System.out.println("[1]=Piedra [2]=Papel [3]=Tijeras");
+				System.out.println("Jugador 2 Ingresa tu jugada:");
+
 				int miOpcion = in.nextInt();
 
 				String j1 = opcionRecibida;
