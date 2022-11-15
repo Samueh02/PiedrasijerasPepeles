@@ -26,7 +26,7 @@ public class SocketClienteParteB {
 
 			boolean continuar = true;
 			String opcion;
-			do {
+			do { 
 				Socket socketAlServidor = new Socket();
 				socketAlServidor.connect(direccionServidor);
 
