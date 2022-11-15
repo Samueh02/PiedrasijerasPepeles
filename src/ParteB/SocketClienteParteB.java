@@ -77,10 +77,12 @@ public class SocketClienteParteB {
 					if (Integer.parseInt(puntos1) >= 3) {
 						System.out.println("------El jugador 1 ha ganado la partida a tres rondas------");
 						socketAlServidor.close();
+						continuar = false;
 					}
 					if (Integer.parseInt(puntos2) >= 3) {
 						System.out.println("------El jugador 2 ha ganado la partida a tres rondas------");
 						socketAlServidor.close();
+						continuar = false;
 
 					}
 
