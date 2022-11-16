@@ -9,11 +9,11 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class SocketClienteParteB { 
+public class SocketClienteParteB {
 
 	// IP y Puerto a la que nos vamos a conectar
 	public static final int PUERTO = 2020;
-	public static final String IP_SERVER = "localhost";
+	public static final String IP_SERVER = "10.100.25.49";
 
 	public static void main(String[] args) {
 		System.out.println("        APLICACI�N CLIENTE         ");
@@ -23,43 +23,46 @@ public class SocketClienteParteB {
 		InetSocketAddress direccionServidor = new InetSocketAddress(IP_SERVER, PUERTO);
 
 		try (Scanner sc = new Scanner(System.in);) {
-			
 			int ronda = 0;
 			boolean continuar = true;
 			String opcion;
-			do { 
-				ronda++;
-				Socket socketAlServidor = new Socket();
-				socketAlServidor.connect(direccionServidor);
+			Socket socketAlServidor = new Socket();
+			socketAlServidor.connect(direccionServidor);
+			InputStreamReader entrada = new InputStreamReader(socketAlServidor.getInputStream());
+			BufferedReader bf = new BufferedReader(entrada);
+			PrintStream salida = new PrintStream(socketAlServidor.getOutputStream());
 
-				PrintStream salida = new PrintStream(socketAlServidor.getOutputStream());
+			do {
+				ronda++;
+
 
 				System.out.println("-----Comienza la ronda " + ronda + " -----");
 				System.out.println("\n[1]=Piedra [2]=Papel [3]=Tijeras");
 				System.out.println("Jugador 1 Ingresa tu jugada:");
 
-				boolean valido = false;
+				boolean noValido = true;
 
 				do {
 					opcion = sc.nextLine();
 
 					if (opcion.equals("1") || opcion.equals("2") || opcion.equals("3")) {
 						salida.println(opcion);
-						valido = true;
-					} else{
-						System.out.println("Ingrese una opción válida");
-					} 
+						noValido = false;
+					} else {
 
-				} while (valido != true);
- 
+						System.out.println("Ingrese una opción válida");
+					}
+
+				} while (noValido);
+
 				// System.out.println("CLIENTE: Esperando a que el servidor acepte la
 				// conexi�n");
 				// System.out.println("CLIENTE: Conexion establecida... a " + IP_SERVER + " por
 				// el puerto " + PUERTO);
 
 				// System.out.println("CLIENTE: Esperando al resultado del servidor...");
-				InputStreamReader entrada = new InputStreamReader(socketAlServidor.getInputStream());
-				BufferedReader bf = new BufferedReader(entrada);
+				System.out.println("Esperando jugador 2...");
+				
 				String puntos1 = bf.readLine();
 				String puntos2 = bf.readLine();
 
