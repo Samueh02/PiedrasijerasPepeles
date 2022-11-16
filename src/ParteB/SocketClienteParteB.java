@@ -20,7 +20,6 @@ public class SocketClienteParteB {
 		System.out.println("        APLICACI�N CLIENTE         ");
 		System.out.println("-----------------------------------");
 
-		boolean imprimir = true;
 		InetSocketAddress direccionServidor = new InetSocketAddress(IP_SERVER, PUERTO);
 
 		try (Scanner sc = new Scanner(System.in);) {
@@ -29,10 +28,10 @@ public class SocketClienteParteB {
 			String opcion;
 			Socket socketAlServidor = new Socket();
 			socketAlServidor.connect(direccionServidor);
+			PrintStream salida = new PrintStream(socketAlServidor.getOutputStream());
 			do {
 				ronda++;
 
-				PrintStream salida = new PrintStream(socketAlServidor.getOutputStream());
 
 				System.out.println("-----Comienza la ronda " + ronda + " -----");
 				System.out.println("\n[1]=Piedra [2]=Papel [3]=Tijeras");
@@ -57,7 +56,6 @@ public class SocketClienteParteB {
 				String puntos1 = bf.readLine();
 				String puntos2 = bf.readLine();
 
-				if (imprimir) {
 
 					System.out.println("Marcador:");
 					System.out.println("Jugador 1: " + puntos1);
@@ -72,8 +70,6 @@ public class SocketClienteParteB {
 						System.out.println("------El jugador 2 ha ganado la partida a tres rondas------");
 						socketAlServidor.close();
 						continuar = false;
-
-					}
 
 				}
 
