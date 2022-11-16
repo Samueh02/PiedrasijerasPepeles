@@ -61,8 +61,11 @@ public class SocketServidorClientB {
 				int miOpcion;
 				do {
 					miOpcion = in.nextInt();
+					if (!(miOpcion == 1 || miOpcion == 2 || miOpcion == 3)) {
+						System.out.println("Ingrese una opción válida");
+					}
 				} while (!(miOpcion == 1 || miOpcion == 2 || miOpcion == 3));
-				
+
 				String j1 = opcionRecibida;
 				String j2 = String.valueOf(miOpcion);
 
