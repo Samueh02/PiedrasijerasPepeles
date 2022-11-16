@@ -58,8 +58,11 @@ public class SocketServidorClientB {
 				System.out.println("[1]=Piedra [2]=Papel [3]=Tijeras");
 				System.out.println("Jugador 2 Ingresa tu jugada:");
 
-				int miOpcion = in.nextInt();
-
+				int miOpcion;
+				do {
+					miOpcion = in.nextInt();
+				} while (!(miOpcion == 1 || miOpcion == 2 || miOpcion == 3));
+				
 				String j1 = opcionRecibida;
 				String j2 = String.valueOf(miOpcion);
 
