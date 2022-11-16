@@ -46,6 +46,7 @@ public class SocketServidorClientB {
 				System.out.println("-Esperando al jugador 1...");
 
 				socketAlCliente = serverSocket.accept();
+				salida = new PrintStream(socketAlCliente.getOutputStream());
 
 				entrada = new InputStreamReader(socketAlCliente.getInputStream());
 				BufferedReader bf = new BufferedReader(entrada);
@@ -58,14 +59,19 @@ public class SocketServidorClientB {
 				System.out.println("[1]=Piedra [2]=Papel [3]=Tijeras");
 				System.out.println("Jugador 2 Ingresa tu jugada:");
 
+				boolean noValido = true;
 				String miOpcion;
 				do {
 					miOpcion = in.nextLine();
-					if (!(miOpcion.equals("1") || miOpcion.equals("2") || miOpcion.equals("3"))) {
+
+					if (miOpcion.equals("1") || miOpcion.equals("2") || miOpcion.equals("3")) {
+						salida.println(miOpcion);
+						noValido = false;
+					} else{
 						System.out.println("Ingrese una opción válida");
 					}
-				} while (!(miOpcion.equals("1") || miOpcion.equals("2") || miOpcion.equals("3")));
-
+				} while (noValido);
+				
 				String j1 = opcionRecibida;
 				String j2 = String.valueOf(miOpcion);
 
@@ -111,9 +117,9 @@ public class SocketServidorClientB {
 				System.out.println("Marcador:");
 				System.out.println("Jugador 1: " + puntos1);
 				System.out.println("Jugador 2: " + puntos2 + "\n");
-
+ 
 				salida.println(puntos1);
-				salida.println(puntos2);
+				salida.println(puntos2); 
 
 				if (puntos1 >= 3) {
 					System.out.println("------El jugador 1 ha ganado la partida a tres rondas------");
