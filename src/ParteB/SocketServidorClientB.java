@@ -39,14 +39,15 @@ public class SocketServidorClientB {
 
 			int ronda = 0;
 
+			socketAlCliente = serverSocket.accept();
+			salida = new PrintStream(socketAlCliente.getOutputStream());
+			
 			do {
 
 				ronda++;
 
 				System.out.println("-Esperando al jugador 1...");
 
-				socketAlCliente = serverSocket.accept();
-				salida = new PrintStream(socketAlCliente.getOutputStream());
 
 				entrada = new InputStreamReader(socketAlCliente.getInputStream());
 				BufferedReader bf = new BufferedReader(entrada);
@@ -65,7 +66,6 @@ public class SocketServidorClientB {
 					miOpcion = in.nextLine();
 
 					if (miOpcion.equals("1") || miOpcion.equals("2") || miOpcion.equals("3")) {
-						salida.println(miOpcion);
 						noValido = false;
 					} else{
 						System.out.println("Ingrese una opción válida");
@@ -73,13 +73,13 @@ public class SocketServidorClientB {
 				} while (noValido);
 				
 				String j1 = opcionRecibida;
-				String j2 = String.valueOf(miOpcion);
+				String j2 = miOpcion;
 
 				if (j1.equals("1") && j2.equals("1")) {
 					System.out.println("Empate");
 
 				} else if (j1.equals("1") && j2.equals("2")) {
-					puntos2 = puntos2 + 1;
+					puntos2++;
 					System.out.println("Gana la ronda el jugador 2\n");
 
 				} else if (j1.equals("1") && j2.equals("3")) {
@@ -112,7 +112,6 @@ public class SocketServidorClientB {
 					System.out.println("Datos introducidos NO VALIDOS");
 				}
 
-				salida = new PrintStream(socketAlCliente.getOutputStream());
 
 				System.out.println("Marcador:");
 				System.out.println("Jugador 1: " + puntos1);
