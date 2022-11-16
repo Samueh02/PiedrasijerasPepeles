@@ -38,24 +38,13 @@ public class SocketClienteParteB {
 				System.out.println("\n[1]=Piedra [2]=Papel [3]=Tijeras");
 				System.out.println("Jugador 1 Ingresa tu jugada:");
 
-				boolean valido = false;
-
+				String miOpcion;
 				do {
-					opcion = sc.nextLine();
-
-					if (opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("4")) {
-						salida.println(opcion);
-						valido = true;
-					} else if (opcion.equals("4")) {
-						continuar = false;
-						salida.println(opcion);
-						imprimir = false;
-
-					} else {
+					miOpcion = sc.nextLine();
+					if (!(miOpcion.equals("1") || miOpcion.equals("2") || miOpcion.equals("3"))) {
 						System.out.println("Ingrese una opción válida");
 					}
-
-				} while (valido != true);
+				} while (!(miOpcion.equals("1") || miOpcion.equals("2") || miOpcion.equals("3")));
 
 				// System.out.println("CLIENTE: Esperando a que el servidor acepte la
 				// conexi�n");
