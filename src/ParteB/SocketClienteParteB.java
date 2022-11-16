@@ -16,6 +16,7 @@ public class SocketClienteParteB {
 	public static final String IP_SERVER = "localhost";
 
 	public static void main(String[] args) {
+
 		System.out.println("        APLICACI�N CLIENTE         ");
 		System.out.println("-----------------------------------");
 
@@ -26,10 +27,10 @@ public class SocketClienteParteB {
 			int ronda = 0;
 			boolean continuar = true;
 			String opcion;
-			do { 
+			Socket socketAlServidor = new Socket();
+			socketAlServidor.connect(direccionServidor);
+			do {
 				ronda++;
-				Socket socketAlServidor = new Socket();
-				socketAlServidor.connect(direccionServidor);
 
 				PrintStream salida = new PrintStream(socketAlServidor.getOutputStream());
 
